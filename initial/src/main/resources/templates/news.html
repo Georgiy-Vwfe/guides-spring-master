@@ -5,7 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'News:' + ${news}"/>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+    </tr>
+    <tr th:each="news : ${newsArr}">
+        <td th:text="${news.title}">Onions</td>
+        <td th:text="${news.content}">2.41</td>
+    </tr>
+</table>
 
 <p>Go to <a href="/">menu</a></p>
 </body>
