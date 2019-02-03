@@ -2,17 +2,22 @@ package hello;
 
 import model.News;
 
-import java.io.File;
-import java.nio.file.Files;
+import java.io.*;
+import java.nio.file.Path;
 
 public class NewsReader {
-    public void write(News news, String path){
-        File file = new File(path);
-        //Files.write(path,);
+    public void write(News[] news, Path path) throws IOException {
+        File file = path.toFile();
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file))) {
+            objectOutputStream.writeObject(news);
+        }
     }
 
-    public File read(String path){
-
-        return null;
+    public String[] read(File news) throws IOException {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(news))) {
+            return (String[]) objectInputStream.readObject();
+        } catch (ClassNotFoundException e) {
+            throw new IOException("Class Not Found");
+        }
     }
 }
