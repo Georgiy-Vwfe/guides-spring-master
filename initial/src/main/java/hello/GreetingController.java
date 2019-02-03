@@ -1,5 +1,6 @@
 package hello;
 
+import model.News;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,12 +42,9 @@ public class GreetingController {
 
     @GetMapping("/news")
     public String news(@RequestParam(name = "news", required = false, defaultValue = "sample text") String news,
-                       Model model) {
-        File file = new File("files/news");
-        if (file.canRead()){
-            news = file.toString();
-            model.addAttribute("news", news);
-        }
+                       Model model, File newsFile) {
+
+        model.addAttribute("news", news);
         return "news";
     }
 }
