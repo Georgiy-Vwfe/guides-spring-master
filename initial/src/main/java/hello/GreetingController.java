@@ -41,7 +41,7 @@ public class GreetingController {
     }
 
     @GetMapping("/news")
-    public String news(@RequestParam(name = "news", required = false, defaultValue = "sample text") String news,
+    public String news(@RequestParam(name = "news", required = false, defaultValue = "sample text") String[] news,
                        Model model, File newsFile) {
 
         model.addAttribute("news", news);
