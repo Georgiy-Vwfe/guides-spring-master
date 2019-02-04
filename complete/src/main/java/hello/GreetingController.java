@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class GreetingController {
@@ -41,9 +43,8 @@ public class GreetingController {
     }
 
     @GetMapping("/news")
-    public String news(@RequestParam(name = "news", required = false, defaultValue = "sample text") String[] news,
-                       Model model, File newsFile) {
-
+    public String news(Model model) {
+        List<News> news = new ArrayList<>();
         model.addAttribute("news", news);
         return "news";
     }
