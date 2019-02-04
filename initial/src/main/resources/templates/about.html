@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hello</title>
+    <title>About</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'"/>
+<p th:text="'Education:' + ${education}"/>
+<p th:text="'Job:' + ${job}"/>
+<p th:text="'Projects:' + ${projects}"/>
 <p>Go to <a href="/">menu</a></p>
 </body>
 </html>
