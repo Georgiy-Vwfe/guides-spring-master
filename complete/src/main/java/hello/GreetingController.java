@@ -1,9 +1,12 @@
 package hello;
 
+import model.News;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.File;
 
 @Controller
 public class GreetingController {
@@ -35,5 +38,13 @@ public class GreetingController {
         model.addAttribute("job", job);
         model.addAttribute("projects", projects);
         return "about";
+    }
+
+    @GetMapping("/news")
+    public String news(@RequestParam(name = "news", required = false, defaultValue = "sample text") String[] news,
+                       Model model, File newsFile) {
+
+        model.addAttribute("news", news);
+        return "news";
     }
 }
