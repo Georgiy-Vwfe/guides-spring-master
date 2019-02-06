@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -47,7 +46,7 @@ public class GreetingController {
     @GetMapping("/news")
     public String news(Model model) {
         List<News> list = new ArrayList<>();
-        String[] news = new String[2];
+        List<String> news = null;
         News n1 = new News("T1","c1");
         News n2 = new News("T2","c2");
         list.add(n1);
@@ -62,7 +61,6 @@ public class GreetingController {
         } catch (IOException e) {
             System.out.println("Read Error");
         }
-
         model.addAttribute("news", news);
         return "news";
     }
