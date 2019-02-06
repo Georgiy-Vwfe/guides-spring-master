@@ -49,17 +49,19 @@ public class GreetingController {
         List<String> news = null;
         News n1 = new News("T1","c1");
         News n2 = new News("T2","c2");
+        News n3 = new News("T3","c3");
         list.add(n1);
         list.add(n2);
+        list.add(n3);
         try {
-            NewsReader.write(list, Paths.get("files\\news"));
+            NewsReader.write(list, Paths.get("../../../resources/files/news"));
         } catch (IOException e) {
-            System.out.println("Write Error");
+            System.out.println("Write Error: \n" + e);
         }
         try {
-            news = NewsReader.read(Paths.get("files\\news"));
+            news = NewsReader.read(Paths.get("../../../resources/files/news"));
         } catch (IOException e) {
-            System.out.println("Read Error");
+            System.out.println("Read Error: \n" + e);
         }
         model.addAttribute("news", news);
         return "news";
