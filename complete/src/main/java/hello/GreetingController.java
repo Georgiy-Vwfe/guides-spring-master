@@ -54,12 +54,12 @@ public class GreetingController {
         list.add(n2);
         list.add(n3);
         try {
-            NewsReader.write(list, Paths.get("../../../resources/files/news"));
+            NewsReader.write(list, Paths.get("src\\main\\resources\\files\\news"));
         } catch (IOException e) {
             System.out.println("Write Error: \n" + e);
         }
         try {
-            news = NewsReader.read(Paths.get("../../../resources/files/news"));
+            news = NewsReader.read(Paths.get("src\\main\\resources\\files\\news"));
         } catch (IOException e) {
             System.out.println("Read Error: \n" + e);
         }
