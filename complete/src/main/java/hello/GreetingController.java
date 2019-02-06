@@ -45,14 +45,20 @@ public class GreetingController {
 
     @GetMapping("/news")
     public String news(Model model) {
+        model.addAttribute("news", newsSetup());
+        return "news";
+    }
+
+    private List<String> newsSetup() {
         List<News> list = new ArrayList<>();
         List<String> news = null;
-        News n1 = new News("T1","c1");
-        News n2 = new News("T2","c2");
-        News n3 = new News("T3","c3");
+        News n1 = new News("T1", "c1");
+        News n2 = new News("T2", "c2");
+        News n3 = new News("T3", "c3");
         list.add(n1);
         list.add(n2);
         list.add(n3);
+
         try {
             NewsReader.write(list, Paths.get("src\\main\\resources\\files\\news"));
         } catch (IOException e) {
@@ -63,7 +69,6 @@ public class GreetingController {
         } catch (IOException e) {
             System.out.println("Read Error: \n" + e);
         }
-        model.addAttribute("news", news);
-        return "news";
+        return news;
     }
 }

@@ -16,8 +16,7 @@ public class NewsReader {
 
     public static List<String> read(Path path) throws IOException {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(path.toFile()))) {
-            List<String> news = (List<String>) objectInputStream.readObject();
-            return news;
+            return (List<String>) objectInputStream.readObject();
         } catch (ClassNotFoundException e) {
             throw new IOException("Class Not Found");
         }
